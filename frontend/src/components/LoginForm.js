@@ -1,0 +1,58 @@
+import React, { useState } from 'react'
+import LoginRegNavbar from './LoginRegNavbar';
+
+
+
+
+
+const LoginForm = ({ onUserLogin }) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        if (!email) {
+            alert("Please enter a email")
+            return
+        }
+          if (!password) {
+            alert("Please enter a password")
+            return
+        }
+
+        onUserLogin({ email, password })
+
+        /*route user to dashboard*/
+
+    }
+
+    return (
+
+      
+        <form className='add-form' onSubmit={onSubmit} >
+            
+            <div className='form-control'>
+                < LoginRegNavbar title = "Login"/>
+                <label>Email </label>
+                <input type='text' placeholder='Email'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)} />
+            </div>
+
+            <div className='form-control'>
+                <label>Password </label>
+                <input type='text' placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} />
+            </div>
+
+            <input type='submit' value='Login' className='btn btn-block' />
+
+        </form>
+
+    )
+}
+
+export default LoginForm
