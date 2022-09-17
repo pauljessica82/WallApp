@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LoginRegNavbar from './LoginRegNavbar';
 
 
-const AddUser = ({ onUser }) => {
+const AddUser = ({ onAdd }) => {
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [email, setEmail] = useState('')
@@ -21,7 +21,7 @@ const AddUser = ({ onUser }) => {
             alert("Passwords do not Match!")
             return
         }
-        onUser({ fname, lname, email, password, confirmpassword })
+        onAdd({ fname, lname, email, password, confirmpassword })
 
         /*route user to dashboard*/
 
@@ -67,7 +67,7 @@ const AddUser = ({ onUser }) => {
                     onChange={(e) => setConfirmpassword(e.target.value)} />
             </div>
 
-            <input type='submit' value='Submit' className='btn btn-block' />
+            <input type='submit' value='Create Account' className='btn btn-block' />
 
         </form>
 
