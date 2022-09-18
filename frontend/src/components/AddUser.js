@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LoginRegNavbar from './LoginRegNavbar';
 
 
-const AddUser = ({ onAdd, showSignUpForm, setShowSignUpForm }) => {
+const AddUser = ({ onAdd }) => {
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [email, setEmail] = useState('')
@@ -29,12 +29,12 @@ const AddUser = ({ onAdd, showSignUpForm, setShowSignUpForm }) => {
 
     return (
 
-        <div className={`${showSignUpForm ? "active" : ""} show`}>
+      
             <div className="modalBackground">
                 <div className="modalContainer-register">
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
-                            < LoginRegNavbar title="Register" onClick={() => { setShowSignUpForm(true) }} />
+                            < LoginRegNavbar title="Register" />
                 <label>First Name</label>
                 <input type='text' placeholder='First Name'
                     value={fname}
@@ -74,7 +74,7 @@ const AddUser = ({ onAdd, showSignUpForm, setShowSignUpForm }) => {
             </form>
                 </div>
             </div>
-        </div>
+     
     )
 }
 

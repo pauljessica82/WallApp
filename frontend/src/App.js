@@ -12,9 +12,10 @@ import Button from './components/Button';
 import Modal from './components/Modal';
 
 const App = () => {
-    const [showLoginForm, setShowLoginForm] = useState(true)
-    const [showSignUpForm, setShowSignUpForm] = useState(true)
+    const [showLoginForm, setShowLoginForm] = useState(false)
+    const [showSignUpForm, setShowSignUpForm] = useState(false)
     const [posts, setPosts] = useState([])
+
 
 
     const addUser = () => {
@@ -30,31 +31,32 @@ const App = () => {
     }
 
     return (
+
         <Router>
-            <div>
-              
-                <HomeHeader
-                    onLogin={() => setShowLoginForm(!showLoginForm) && setShowSignUpForm(true)} showLogin={showLoginForm}
-                    onSignUp={() => setShowSignUpForm(!showSignUpForm) && setShowLoginForm(true)} showSignUp={showSignUpForm} />
-
-                <LoginForm showLoginForm={showLoginForm} onUserLogin={addUser} setShowLoginForm={setShowLoginForm} />
-               
-                {/*  <div className="container">
-                   <AddUser/>
-                    <LoginForm/>
-                 </div> */}
-               
-                <Routes>
-                    <Route path='/' exact element={(
+            <HomeHeader />
+            <Routes>
+              <Route path='/' exact element={(
                         <>
-                            <AddUser showSignUpForm={showSignUpForm} setShowSignUpForm={setShowSignUpForm} />
-                            <AddUser showSignUpForm={showSignUpForm} setShowSignUpForm={setShowSignUpForm} />
+                     
 
-                            </>
+                        </>
+                    )}
+                    />         
+                    <Route path='/register' exact element={(
+                    <>
+                        <AddUser onAdd={addUser} />
+                           
+                        </>
                     )}
                     />
-
-
+                      <Route path='/login' exact element={(
+                    <>
+                        <LoginForm onUserLogin={loginUser} />
+                           
+                        </>
+                    )}
+                    />
+               
                 </Routes>
                 <br /> <br />
                 <div className="container">
@@ -65,7 +67,7 @@ const App = () => {
                 </div>
 
                 <Footer />
-            </div>
+ 
         </Router>
   );
 }

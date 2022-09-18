@@ -1,13 +1,24 @@
 import PropTypes from 'prop-types'
+import { FaTimes } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import './Modal.css'
 
-const LoginRegNavbar = ({ title, onClick }) => {
+const LoginRegNavbar = ({ title }) => {
  
 
     return (
         <header className='header' >
+
             <h1> {title} </h1> <div className="titleCloseBtn">
-                <button onClick={onClick} className="titleCloseBtn"> X </button>
+                <Link to="/">
+                    < FaTimes style={{
+                        color:
+                            'red', cursor: 'pointer'
+                    }}
+                        
+                    />
+                   
+                    </Link>
             </div>
         </header>
     )

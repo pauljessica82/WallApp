@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Button from './Button'
+import { Link } from 'react-router-dom'
 
 /*onlogin and on show will bring up these elemnts. the show login and showsignup will be used as conditional checks*/
 
@@ -8,14 +9,18 @@ const HomeHeader = ({ onLogin, onSignUp }) => {
         <div>
         <div className ="navbar">
             
-
+                <Link to="/">
                 <h3>
                     WallShare
-                </h3>
-            
+                    </h3>
+                </Link>
                 <span >
-                    <Button text="Login" color="steelblue" onClick={onLogin} left_percent="78% "/>
-                    <Button text="Sign Up" color="limegreen" onClick={onSignUp} left_percent="85%" />
+                    <Link to='/login'>
+                    <Button text="Login" color="steelblue" onClick={onLogin} left_percent="78% " />
+                    </Link>
+                    <Link to='/register'>
+                        <Button text="Sign Up" color="limegreen" onClick={onSignUp} left_percent="85%" />
+                        </Link>
                 </span>
             </div>
             </div>

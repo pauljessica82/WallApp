@@ -3,7 +3,7 @@ import LoginRegNavbar from './LoginRegNavbar';
 import './Modal.css'
 
 
-const LoginForm = ({ onUserLogin, showLoginForm, setShowLoginForm, setShowSignUpForm }) => {
+const LoginForm = ({ onUserLogin }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -11,14 +11,14 @@ const LoginForm = ({ onUserLogin, showLoginForm, setShowLoginForm, setShowSignUp
     const onSubmit = (e) => {
         e.preventDefault()
 
-/*        if (!email) {
+        if (!email) {
             alert("Please enter a email")
             return
         }
           if (!password) {
             alert("Please enter a password")
             return
-        }*/
+        }
 
 
         onUserLogin({ email, password })
@@ -28,14 +28,12 @@ const LoginForm = ({ onUserLogin, showLoginForm, setShowLoginForm, setShowSignUp
     }
 
     return (
-
         
-        <div className={`${showLoginForm ? "active" : ""} show`}>
             <div className="modalBackground">
                 <div className="modalContainer">
             <form className='add-form' background-color="limegreen" onSubmit={onSubmit} >
                         <div className='form-control'>
-                            < LoginRegNavbar title="Login" onClick={() => { setShowLoginForm(true) }} />
+                            < LoginRegNavbar title="Login" />
                 <label>Email </label>
                 <input type='text' placeholder='Email'
                     value={email}
@@ -55,7 +53,7 @@ const LoginForm = ({ onUserLogin, showLoginForm, setShowLoginForm, setShowSignUp
                     </form>
                 </div>
             </div>
-        </div>
+    
     )
 }
 
