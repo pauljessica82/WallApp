@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import LoginRegNavbar from './LoginRegNavbar';
 
 
-const AddUser = ({ onAdd }) => {
+const AddUser = ({ onAdd, showSignUpForm, setShowSignUpForm }) => {
     const [fname, setFname] = useState('')
     const [lname, setLname] = useState('')
     const [email, setEmail] = useState('')
@@ -29,10 +29,12 @@ const AddUser = ({ onAdd }) => {
 
     return (
 
-
+        <div className={`${showSignUpForm ? "active" : ""} show`}>
+            <div className="modalBackground">
+                <div className="modalContainer-register">
         <form className='add-form' onSubmit={onSubmit}>
             <div className='form-control'>
-                < LoginRegNavbar title="Register" />
+                            < LoginRegNavbar title="Register" onClick={() => { setShowSignUpForm(true) }} />
                 <label>First Name</label>
                 <input type='text' placeholder='First Name'
                     value={fname}
@@ -66,11 +68,13 @@ const AddUser = ({ onAdd }) => {
                     value={confirmpassword}
                     onChange={(e) => setConfirmpassword(e.target.value)} />
             </div>
-
-            <input type='submit' value='Create Account' className='btn btn-block' />
-
-        </form>
-
+                        <div className="footer">
+            <input type='submit' value='Create Account' className='form-button' />
+                        </div>
+            </form>
+                </div>
+            </div>
+        </div>
     )
 }
 

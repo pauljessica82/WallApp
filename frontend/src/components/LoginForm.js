@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import LoginRegNavbar from './LoginRegNavbar';
+import './Modal.css'
 
 
-
-
-
-const LoginForm = ({ onUserLogin }) => {
+const LoginForm = ({ onUserLogin, showLoginForm, setShowLoginForm, setShowSignUpForm }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -13,14 +11,15 @@ const LoginForm = ({ onUserLogin }) => {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!email) {
+/*        if (!email) {
             alert("Please enter a email")
             return
         }
           if (!password) {
             alert("Please enter a password")
             return
-        }
+        }*/
+
 
         onUserLogin({ email, password })
 
@@ -30,11 +29,13 @@ const LoginForm = ({ onUserLogin }) => {
 
     return (
 
-      
-        <form className='add-form' onSubmit={onSubmit} >
-            
-            <div className='form-control'>
-                < LoginRegNavbar title = "Login"/>
+        
+        <div className={`${showLoginForm ? "active" : ""} show`}>
+            <div className="modalBackground">
+                <div className="modalContainer">
+            <form className='add-form' background-color="limegreen" onSubmit={onSubmit} >
+                        <div className='form-control'>
+                            < LoginRegNavbar title="Login" onClick={() => { setShowLoginForm(true) }} />
                 <label>Email </label>
                 <input type='text' placeholder='Email'
                     value={email}
@@ -47,11 +48,14 @@ const LoginForm = ({ onUserLogin }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
-
-            <input type='submit' value='Login' className='btn btn-block' />
-
-        </form>
-
+                        <div className="footer">
+                    
+                    <input type='submit' value='Login' className='form-button' color='blue' />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     )
 }
 
