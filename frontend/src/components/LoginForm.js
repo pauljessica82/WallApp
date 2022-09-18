@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import LoginRegNavbar from './LoginRegNavbar';
-
-
-
+import './Modal.css'
 
 
 const LoginForm = ({ onUserLogin }) => {
@@ -22,6 +20,7 @@ const LoginForm = ({ onUserLogin }) => {
             return
         }
 
+
         onUserLogin({ email, password })
 
         /*route user to dashboard*/
@@ -29,12 +28,12 @@ const LoginForm = ({ onUserLogin }) => {
     }
 
     return (
-
-      
-        <form className='add-form' onSubmit={onSubmit} >
-            
-            <div className='form-control'>
-                < LoginRegNavbar title = "Login"/>
+        
+            <div className="modalBackground">
+                <div className="modalContainer">
+            <form className='add-form' background-color="limegreen" onSubmit={onSubmit} >
+                        <div className='form-control'>
+                            < LoginRegNavbar title="Login" />
                 <label>Email </label>
                 <input type='text' placeholder='Email'
                     value={email}
@@ -47,11 +46,14 @@ const LoginForm = ({ onUserLogin }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
-
-            <input type='submit' value='Login' className='btn btn-block' />
-
-        </form>
-
+                        <div className="footer">
+                    
+                    <input type='submit' value='Login' className='form-button' color='blue' />
+                        </div>
+                    </form>
+                </div>
+            </div>
+    
     )
 }
 

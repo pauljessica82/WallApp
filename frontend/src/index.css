@@ -10,6 +10,40 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.loginicon {
+    position: absolute;
+    width: 80px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    color: black;
+    height: 40px;
+    left: 85%;
+    top: 10px;
+    background: #2bc6ff;
+    border-radius: 24px;
+    cursor: pointer;
+}
+.navbar {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+}
+
+    .navbar h3 {
+        font-size: 26px;
+ 
+         color: forestgreen;
+         font-weight: bolder;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif, cursive;
+        float: left;
+        padding: 10px 40px 10px 20px;
+    }
 .container {
     max-width: 500px;
     margin: 30px auto;
@@ -28,7 +62,34 @@ body {
 }
 
 .btn {
+    position: fixed;
+    width: 80px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    color: black;
+    height: 40px;
+    left: 85%;
+    top: 10px;
+    background: #2bc6ff;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+
+    .btn:focus {
+        outline: none;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+.form-button {
     display: inline-block;
+    width: 200px;
     background: #000;
     color: #fff;
     border: none;
@@ -41,17 +102,11 @@ body {
     font-family: inherit;
 }
 
-    .btn:focus {
-        outline: none;
-    }
-
-    .btn:active {
-        transform: scale(0.98);
-    }
-
-.btn-block {
-    display: block;
-    width: 100%;
+.btn-block-create-account {
+    display: inline-block;
+    width: 50%;
+    background-color: limegreen;
+    margin-bottom: 20px;
 }
 
 .post {
@@ -72,15 +127,23 @@ body {
     }
 
 .add-form {
+    max-width: 500px;
     margin-bottom: 40px;
+    margin: 30px auto; 
+    opacity: 80%;
+    z-index: 1;
 }
 
 .form-control {
     margin: 20px 0;
+
 }
 
     .form-control label {
         display: block;
+        color: black;
+        margin: 5px;
+      
     }
 
     .form-control input {
@@ -110,3 +173,19 @@ footer {
     margin-top: 30px;
     text-align: center;
 }
+
+.show {
+    display: block;
+    transition: 800ms;
+    opacity: 1;
+
+}
+
+    .show.active {
+        opacity: 0;
+        transform: translateY(-50%);
+        transition: .4s ease-in-out;
+        position: fixed;
+        z-index: 1;
+        
+    }
