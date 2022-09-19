@@ -48,7 +48,7 @@ const LoginForm = ({ onUserLogin }) => {
             </div>
                         <div className="footer">
                     
-                    <input type='submit' value='Login' className='form-button' color='blue' />
+                    <input type='submit' value='Login' className='form-button' />
                         </div>
                     </form>
                 </div>

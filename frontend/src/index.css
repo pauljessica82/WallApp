@@ -6,6 +6,17 @@
     padding: 0;
 }
 
+#backgroundimage {
+    background: url(../public/lime-green-background.jpg) no-repeat center center fixed;
+    width: 2024px;
+    height: 800px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    position: absolute;
+    z-index:-5;
+} 
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -33,6 +44,7 @@ body {
     height: 60px;
     left: 0px;
     top: 0px;
+    overflow:auto;
 }
 
     .navbar h3 {
