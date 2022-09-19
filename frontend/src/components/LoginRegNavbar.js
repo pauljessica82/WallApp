@@ -13,7 +13,9 @@ const LoginRegNavbar = ({ title }) => {
                 <Link to="/">
                     < FaTimes style={{
                         color:
-                            'red', cursor: 'pointer'
+                            'red',
+                        cursor: 'pointer',
+                        
                         
                     }}
                         

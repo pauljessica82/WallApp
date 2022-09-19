@@ -27,17 +27,21 @@ const App = () => {
     return (
 
         <Router>
-            <HomeHeader />
+            
+                <HomeHeader />
+                
             <Routes>
               <Route path='/' exact element={(
                         <>
-                        <br /> <br />
-                        <div className="container">
+                        <div id="backgroundimage">
+                            
+                        </div>
+                  <>
                             <header>
                                 <h2>Check out the Latest Posts </h2>
                             </header>
                            
-                        </div>
+                        </>
                         </>
                     )}
                     />         
