@@ -14,6 +14,7 @@ const LoginRegNavbar = ({ title }) => {
                     < FaTimes style={{
                         color:
                             'red', cursor: 'pointer'
+                        
                     }}
                         
                     />

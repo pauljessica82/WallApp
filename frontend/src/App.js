@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import logo from './logo.svg';
-
 import HomeHeader from './components/HomeHeader';
 import LoginRegNavbar from './components/LoginRegNavbar';
 import AddUser from './components/AddUser';
 import LoginForm from './components/LoginForm';
 import Post from './components/Post';
 import Footer from './components/Footer';
-import Button from './components/Button';
-import Modal from './components/Modal';
+import CreatePost from './components/CreatePost';
+
 
 const App = () => {
-    const [showLoginForm, setShowLoginForm] = useState(false)
-    const [showSignUpForm, setShowSignUpForm] = useState(false)
     const [posts, setPosts] = useState([])
-
-
 
     const addUser = () => {
         return (
@@ -37,8 +31,13 @@ const App = () => {
             <Routes>
               <Route path='/' exact element={(
                         <>
-                     
-
+                        <br /> <br />
+                        <div className="container">
+                            <header>
+                                <h2>Check out the Latest Posts </h2>
+                            </header>
+                           
+                        </div>
                         </>
                     )}
                     />         
@@ -55,16 +54,11 @@ const App = () => {
                            
                         </>
                     )}
-                    />
-               
-                </Routes>
-                <br /> <br />
-                <div className="container">
-                    <header>
-                        <h2>Check out the Latest Posts </h2>
-                    </header>
+                />
+                <Route path="/feed" exact element={<CreatePost />} />
 
-                </div>
+                </Routes>
+            
 
                 <Footer />
  
