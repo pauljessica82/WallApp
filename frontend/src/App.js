@@ -18,6 +18,12 @@ const App = () => {
         )
     }
 
+      const tryCreatePost = () => {
+        return (
+            console.log("Post added")
+        )
+    }
+
      const loginUser = () => {
         return (
             console.log("Logging in....")

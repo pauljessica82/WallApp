@@ -22,6 +22,8 @@ const LoginForm = ({ onUserLogin }) => {
 
 
         onUserLogin({ email, password })
+        setEmail('')
+        setPassword('')
 
         /*route user to dashboard*/
 
