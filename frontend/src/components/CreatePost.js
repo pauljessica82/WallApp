@@ -1,20 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./CreatePost.css"
 import "./Button"
-import Button from "./Button";
-import { FaCameraRetro, FaRegImages } from "react-icons/fa";
+import { FaRegImages } from "react-icons/fa";
 
 
 
-const CreatePost = ({  }) => {
-    const [caption, setCaption] = useState("");
+const CreatePost = ({ onAddPost  }) => {
+    const [caption, setCaption] = useState('');
     const [image, setImage] = useState();
-    const [preview, setPreview] = useState()
 
-
-    const onSubmit = (e) => {
+    const onSubmit = (e  ) => {
         e.preventDefault()
+
+         const form_data = new FormData();
+        form_data.append('caption', caption);
+        form_data.append('image', image, image.name);
+      
+        if (!caption) {
+            alert("Please type a message")
+            return
+        }
+
+/*        need image.name 
+*/     /* onAddPost({ caption, image  })*/
+        onAddPost(form_data)
+        setCaption('')
+        setImage()
     }
+
         const imageChange = (e) => {
             if (e.target.files && e.target.files.length > 0) {
                 setImage(e.target.files[0]);
@@ -25,17 +38,13 @@ const CreatePost = ({  }) => {
     const removeSelectedImage = () => {
         setImage();
 
-    };
+    }
 
-
-        /*    onCreatePost({ caption, image })
-            setCaption('')
-            setImage('')*/
 
         /*    const[user, setUser] = useState(undefined)*/
 
     return (
-            <form onSubmit={onSubmit}>
+            <form id ="form" onSubmit={onSubmit}>
             <div className="app__createPost">
                 <div className ="imageUpload">
                     <div className="createAPost__Top">
@@ -46,35 +55,36 @@ const CreatePost = ({  }) => {
                     <div className="createAPost__center">
                         <textarea
                             className="createAPost__textarea"
-                            name="create a post"
+                            name="caption"
                             rows="3"
                             value={caption}
-                            placeholder="Enter a caption..."
+                            placeholder="Enter a message..."
+                          
                             onChange={(e) => setCaption(e.target.value)}
                         >
                         </textarea>
                  
                         <div className="imagePreview">
-                            {image && <img src={URL.createObjectURL(image)} onClick={() => removeSelectedImage()} id="image-1-preview" />}
+                            {image && <img src={URL.createObjectURL(image)} onClick={() => removeSelectedImage()} id="image"  alt=""/>}
                         </div>
                     </div>
 
                         <div className="imageUpload__bottom">
                             <div className="image-upload">
                                 <label htmlFor="file-input">
-                                    <FaRegImages style={{ marginTop: "5px" }} />
+                                <FaRegImages size={25} style={{ marginTop: "5px" }} />
                                 </label>
 
                                 <input
-                                    id="file-input"
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={imageChange}
+                                id="file-input"
+                                type="file"
+                                accept="image/*"
+                                onChange={imageChange}
+                                name="image"                          
                                 />
                                 
                             </div>
                         
-
                         <button
                             type='submit'
                             className="button"
@@ -87,9 +97,7 @@ const CreatePost = ({  }) => {
                             </button>
                     </div>
                 </div>
-                
             </div>
-
         </form>
         )
     }

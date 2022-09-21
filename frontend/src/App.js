@@ -7,10 +7,28 @@ import LoginForm from './components/LoginForm';
 import Post from './components/Post';
 import Footer from './components/Footer';
 import CreatePost from './components/CreatePost';
+import { config, detailRoute } from './config'
+import axios  from 'axios';
 
 
 const App = () => {
     const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        const getPosts = async () => {
+            const postsFromServer = await fetchPosts()
+            setPosts(postsFromServer)
+        }
+
+        getPosts()
+    }, [])
+
+    const fetchPosts = async () => {
+        const res = await fetch(config.url.BASE_API)
+        const data = await res.json()
+
+        return data
+    }
 
     const addUser = () => {
         return (
@@ -18,11 +36,41 @@ const App = () => {
         )
     }
 
-      const tryCreatePost = () => {
-        return (
-            console.log("Post added")
-        )
+/*    const addPost = async (post) => {
+
+    console.log(post)
+       *//* console.log(JSON.stringify({ caption: post.caption, ima }))*//*
+        const res = await fetch(config.url.BASE_API, {
+
+            method: 'POST',
+            headers: {
+            
+               'Content-Type' : 'multipart/form-data',
+            },
+
+            body: JSON.stringify(post )
+        })
+
+        const data = await res.json()
+        
+        setPosts([...posts, data]) 
+        }                     */
+
+
+    const addPost = async (newPost) => {
+        const url = config.url.BASE_API;
+        axios.post(url, newPost, {
+            headers: {
+
+                'Content-Type': 'multipart/form-data',
+            }
+        })
+            .then(res => {
+                console.log(res.data);
+            })
+        .catch(err => console.log(err))
     }
+
 
      const loginUser = () => {
         return (
@@ -65,7 +113,7 @@ const App = () => {
                         </>
                     )}
                 />
-                <Route path="/feed" exact element={<CreatePost />} />
+                <Route path="/feed" exact element={<CreatePost onAddPost={addPost} />} />
 
                 </Routes>
             
