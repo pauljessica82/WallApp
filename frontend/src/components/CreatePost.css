@@ -38,8 +38,7 @@
 
 .createAPost__center {
     margin: 0px 16px;
-    border : double;
-    border-radius:5px;
+
 }
 
 .imageUpload__bottom {
@@ -51,8 +50,8 @@
 
 .createAPost__textarea {
     border: none;
-    width: 400px;
-    height: 275px;
+    width: 100%;
+    
     font-size: 16px;
     margin-top: 8px;
 }
@@ -68,9 +67,8 @@
 .button {
     background-color: transparent;
     cursor: pointer;
-    border: solid;
-    width: 80px;
-    border-color:steelblue;
+    border: none;
+
 }
 
     .button:focus {
@@ -88,8 +86,7 @@
     margin-left: 8px;
 }
 
-#image-1-preview {
-    display: none;
+#image {
     max-height: 60px;
     position: relative;
     border-radius: 5px;

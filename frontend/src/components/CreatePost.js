@@ -1,52 +1,107 @@
 import React, { useState } from "react";
 import "./CreatePost.css"
 import "./Button"
-import Button from "./Button";
+import { FaRegImages } from "react-icons/fa";
 
 
 
-const CreatePost = ({ user }) => {
-    const [caption, setCaption] = useState("");
-/*    const[user, setUser] = useState(null)*/
+const CreatePost = ({ onAddPost  }) => {
+    const [caption, setCaption] = useState('');
+    const [image, setImage] = useState();
+
+    const onSubmit = (e  ) => {
+        e.preventDefault()
+
+         const form_data = new FormData();
+        form_data.append('caption', caption);
+        form_data.append('image', image, image.name);
+      
+        if (!caption) {
+            alert("Please type a message")
+            return
+        }
+
+/*        need image.name 
+*/     /* onAddPost({ caption, image  })*/
+        onAddPost(form_data)
+        setCaption('')
+        setImage()
+    }
+
+        const imageChange = (e) => {
+            if (e.target.files && e.target.files.length > 0) {
+                setImage(e.target.files[0]);
+              
+            }
+    }
+
+    const removeSelectedImage = () => {
+        setImage();
+
+    }
+
+
+        /*    const[user, setUser] = useState(undefined)*/
 
     return (
-        <div className="app__createPost">
-            <div>
-            <div className="createAPost__Top">
-                <p><strong>Create a Post</strong></p>
-            </div>
-            {/* <progress value={progress} max="100" /> */}
-            
-            <div className="createAPost__center">
-                <textarea
-                    className="createAPost__textarea"
-                    name="create a post"
+            <form id ="form" onSubmit={onSubmit}>
+            <div className="app__createPost">
+                <div className ="imageUpload">
+                    <div className="createAPost__Top">
+                        <p><strong>Create a Post</strong></p>
+                    </div>
+                    {/* <progress value={progress} max="100" /> */}
+
+                    <div className="createAPost__center">
+                        <textarea
+                            className="createAPost__textarea"
+                            name="caption"
+                            rows="3"
+                            value={caption}
+                            placeholder="Enter a message..."
+                          
+                            onChange={(e) => setCaption(e.target.value)}
+                        >
+                        </textarea>
+                 
+                        <div className="imagePreview">
+                            {image && <img src={URL.createObjectURL(image)} onClick={() => removeSelectedImage()} id="image"  alt=""/>}
+                        </div>
+                    </div>
+
+                        <div className="imageUpload__bottom">
+                            <div className="image-upload">
+                                <label htmlFor="file-input">
+                                <FaRegImages size={25} style={{ marginTop: "5px" }} />
+                                </label>
+
+                                <input
+                                id="file-input"
+                                type="file"
+                                accept="image/*"
+                                onChange={imageChange}
+                                name="image"                          
+                                />
+                                
+                            </div>
                         
-                    rows="3"
-                    value={caption}
-                    placeholder="Enter a caption..."
-                    onChange={(e) => setCaption(e.target.value)}
-                >
-                    </textarea>
+                        <button
+                            type='submit'
+                            className="button"
+                            style={{
+                                color: caption ? "black" : "lightgrey",
+                                fontWeight: caption ? "600" : "500",
+                            }}
+                        >
+                            Post
+                            </button>
+                    </div>
                 </div>
-                <center>
-                <button
-                    className="button"
-                    style={{
-                        color: caption ? "black" : "lightgrey",
-                        fontWeight: caption ? "600" : "500",
-                    }}
-                >
-                    Post
-                </button>
-            </center>
             </div>
-        </div>
-    )
+        </form>
+        )
+    }
 
 
-}
 
-export default CreatePost;
-    
- 
+    export default CreatePost;
