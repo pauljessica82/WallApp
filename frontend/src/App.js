@@ -1,127 +1,47 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import HomeHeader from './components/HomeHeader';
-import LoginRegNavbar from './components/LoginRegNavbar';
-import AddUser from './components/AddUser';
-import LoginForm from './components/LoginForm';
-import Post from './components/Post';
+import PrivateRoute from "./utils/PrivateRoute";
+import { AuthProvider } from "./context/AuthContext";
+import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import CreatePost from './components/CreatePost';
-import { config, detailRoute } from './config'
-import axios  from 'axios';
+import RegisterPage from './views/registerPage';
+import LoginPage from './views/loginPage';
+import FeedPage from './views/ProtectedPage';
+import HomePage from './views/homePage';
+
 
 
 const App = () => {
-    const [posts, setPosts] = useState([])
-
-    useEffect(() => {
-        const getPosts = async () => {
-            const postsFromServer = await fetchPosts()
-            setPosts(postsFromServer)
-        }
-
-        getPosts()
-    }, [])
-
-    const fetchPosts = async () => {
-        const res = await fetch(config.url.BASE_API)
-        const data = await res.json()
-
-        return data
-    }
-
-    const addUser = () => {
-        return (
-            console.log("User added")
-        )
-    }
-
-/*    const addPost = async (post) => {
-
-    console.log(post)
-       *//* console.log(JSON.stringify({ caption: post.caption, ima }))*//*
-        const res = await fetch(config.url.BASE_API, {
-
-            method: 'POST',
-            headers: {
-            
-               'Content-Type' : 'multipart/form-data',
-            },
-
-            body: JSON.stringify(post )
-        })
-
-        const data = await res.json()
-        
-        setPosts([...posts, data]) 
-        }                     */
-
-
-    const addPost = async (newPost) => {
-        const url = config.url.BASE_API;
-        axios.post(url, newPost, {
-            headers: {
-
-                'Content-Type': 'multipart/form-data',
-            }
-        })
-            .then(res => {
-                console.log(res.data);
-            })
-        .catch(err => console.log(err))
-    }
-
-
-     const loginUser = () => {
-        return (
-            console.log("Logging in....")
-        )
-    }
-
+   
     return (
-
         <Router>
-            
-                <HomeHeader />
-                
-            <Routes>
-              <Route path='/' exact element={(
-                        <>
-                        <div id="backgroundimage">
-                            
-                        </div>
-                  <>
-                            <header>
-                                <h2>Check out the Latest Posts </h2>
-                            </header>
-                           
-                        </>
-                        </>
-                    )}
-                    />         
-                    <Route path='/register' exact element={(
-                    <>
-                        <AddUser onAdd={addUser} />
-                           
-                        </>
-                    )}
-                    />
-                      <Route path='/login' exact element={(
-                    <>
-                        <LoginForm onUserLogin={loginUser} />
-                           
-                        </>
-                    )}
-                />
-                <Route path="/feed" exact element={<CreatePost onAddPost={addPost} />} />
+            <div className="flex flex-col min-h-screen overflow-hidden">
+                <AuthProvider>
+                    <NavBar />
+                    <Routes>
+                    
+                        <Route exact path='/feed' element={<PrivateRoute />}>
+                            <Route exact path='/feed' element={<FeedPage />} />
+                        </Route>
+                        
+                    
+                        <Route exact path='/' element={<HomePage />}>
+                        </Route>
 
-                </Routes>
-            
-
+                        <Route exact path='/register' element={<RegisterPage />}>
+                        </Route>
+                    
+                    
+                        <Route exact path='/login' element={<LoginPage />}>
+                        </Route>
+                        
+                        </Routes>
+                </AuthProvider>
                 <Footer />
- 
+            </div>
         </Router>
-  );
+      
+  )
 }
 
 export default App;

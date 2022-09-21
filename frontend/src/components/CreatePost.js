@@ -21,8 +21,6 @@ const CreatePost = ({ onAddPost  }) => {
             return
         }
 
-/*        need image.name 
-*/     /* onAddPost({ caption, image  })*/
         onAddPost(form_data)
         setCaption('')
         setImage()
@@ -40,17 +38,13 @@ const CreatePost = ({ onAddPost  }) => {
 
     }
 
-
-        /*    const[user, setUser] = useState(undefined)*/
-
     return (
-            <form id ="form" onSubmit={onSubmit}>
+           <form id ="form" onSubmit={onSubmit}>
             <div className="app__createPost">
                 <div className ="imageUpload">
                     <div className="createAPost__Top">
                         <p><strong>Create a Post</strong></p>
                     </div>
-                    {/* <progress value={progress} max="100" /> */}
 
                     <div className="createAPost__center">
                         <textarea

@@ -1,14 +1,19 @@
 .post {
-    max-width: 600px;
-    background-color: white;
+    max-width: 500px;
+    background-color: blanchedalmond;
     margin-bottom: 16px;
+    border: solid;
+    border-color: burlywood;
+    border-radius: 5px;
+    
+    justify-content: center;
+
 }
 
 .post__image {
     width: 100%;
-    object-fit: contain;
-    border-top: 0.5px solid #eff2f2;
-    border-bottom: 0.5px solid #eff2f2;
+    object-fit: fill;
+    height: 250px;
 }
 
 .post__header {
@@ -23,6 +28,8 @@
 
 .post__bottom {
     padding: 6px 12px;
+    background-color: white;
+  
 }
 
 .feed__posts {

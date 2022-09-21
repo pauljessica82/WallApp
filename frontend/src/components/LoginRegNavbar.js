@@ -15,12 +15,8 @@ const LoginRegNavbar = ({ title }) => {
                         color:
                             'red',
                         cursor: 'pointer',
-                        
-                        
                     }}
-                        
                     />
-                   
                     </Link>
             </div>
         </header>
