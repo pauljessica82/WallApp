@@ -3,7 +3,7 @@
 ## Overview
 
 WallApp is a simple app that allows a user to write a message and post a picture to a "wall." To post, a user must first signup, after which, they will be redirected to 
-a login page where they can use their newly created credentials to login and start posting. After signing in, the user will receive an email welcoming them to "WallShare"(internal name of site).
+a login page where they can use their newly created credentials to login and start posting. After registering, the user will receive an email welcoming them to "WallShare"(internal name of site).
 
 Any guest user can still view posts without having to sign in.
 
@@ -19,7 +19,7 @@ Any guest user can still view posts without having to sign in.
    - In your terminal, navigate to the directory in which you cloned the project.
    - Execute "cd frontend" in terminal to navigate to the frontend directory
    - Execute "npm install" to install all the packages needed for the frontend.
-   - Once package install is complete run "npm start" to fire up the local react environment at http://localhost:3000/ . You should now see the landing page: 
+   - Once packages are installed, run "npm start" to fire up the local react environment at http://localhost:3000/ . You should now see the landing page: 
    
    ![image](https://user-images.githubusercontent.com/51688932/192004803-4cf6f213-9af1-43f5-94c2-9cabf2b0946c.png)
 
@@ -44,10 +44,11 @@ Any guest user can still view posts without having to sign in.
                         
 7. Creating User and Post tables
 
-   - In terminal, while in the ...WallApp/backend run "python manage.py migrate --run-syncdb" and tables will be generated to create users and posts.
+   - In terminal, while in the ...WallApp/backend run "python manage.py migrate --run-syncdb". 
    - Start the server by running "python manage.py runserver" in the terminal.
    - If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow".
-   - Now you should be able to register, login and create a new user by navigating to http://localhost:3000/. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email for registering) 
+   - Now you should be able to register, login and create a new user by navigating to http://localhost:3000/.  
+   - You can use: https://temp-mail.org/en/ if you would not like to use a real email for registering
             
 ![image](https://user-images.githubusercontent.com/51688932/192016102-2935b8e2-e3fe-427a-966f-44c9fa5f0cb9.png)
 
