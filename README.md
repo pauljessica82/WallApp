@@ -1,6 +1,5 @@
 # WallApp
 
-
 ## Overview
 
 WallApp is a simple app that allows a user to write a message and post a picture to a "wall." To post, a user must first signup, after which, they will be redirected to 
@@ -29,18 +28,21 @@ a login page where they can use their newly created credentials to login and sta
    c. Activate virtual environment. " . env\Scripts\activate".
    d. Install dependencies which are located in requirements.txt .
       Ex. "pip install -r requirements.txt"
-   e. *** If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow". ***
+   e. (Pycharm) Enable python virtual environment in PyCharm. File-Settings-Python Interpreter select new virtual environment with 
+   specifying path to ....\env\Scripts\python.exe
+   f. *** If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow". ***
    
 6. Set Up utils.py for email sending
 
    a. When user registers, a new email is fired off using the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD specified in the ..backend/user/utils.py file. Update these            to a valid email, and password of your choosing.  *Some details to note: 
-            a. The current script uses "smtp.gmail.com" as the host, the EMAIL_HOST_USER must be a valid gmail account with IMAP enabled. To enable IMAP, see:                      https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on.*The EMAIL_HOST_PASSWORD will be a generated             app password. To generate an app password for your Gmail account, see https://support.google.com/accounts/answer/185833?hl=en#:~:text=Create%20%26%20use%20App%20Passwords . 
-   
+            a. The current script uses "smtp.gmail.com" as the host, the EMAIL_HOST_USER must be a valid gmail account with IMAP enabled. To enable IMAP, see: https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on. The EMAIL_HOST_PASSWORD will be a generated app password. To generate an app password for your Gmail account, see https://support.google.com/accounts/answer/185833?hl=en#:~:text=Create%20%26%20use%20App%20Passwords . 
+                        
 7. Creating User and Post tables
 
    a. In terminal, run "python manage.py migrate --run-syncdb" and tables will be generated to create users and posts.
-   b. Now you should be able to register a new user by navigating to http://localhost:3000/ , and clicking SignUp. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email ) 
+   b. Start the server by running python manage.py runserver in the terminal.
+   b. Now you should be able to register, login and create a new user by navigating to http://localhost:3000/. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email for registering) 
             
+![image](https://user-images.githubusercontent.com/51688932/192016102-2935b8e2-e3fe-427a-966f-44c9fa5f0cb9.png)
 
-6. (Pycharm) Enable python virtual environment in PyCharm. File-Settings-Python Interpreter select new virtual environment with 
-   specifying path to ....\env\Scripts\python.exe
+
