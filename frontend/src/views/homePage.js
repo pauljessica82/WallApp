@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { config } from '../config'
 import Feed from '../components/Feed'
+import Header from '../components/Header'
 
 
 const HomePage = () => {
@@ -25,9 +26,9 @@ const HomePage = () => {
 
     return (
         <>
-        <section>
-            <h1>Welcome to WallShare! Login or Signup to start posting. </h1>
-            </section>
+            <div id="backgroundimage-home">
+            </div>
+                    <Header />
             <Feed posts={posts} />
         </>
     )

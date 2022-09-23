@@ -23,7 +23,9 @@ const LoginPage= () => {
             return
         }
 
-        loginUser( username, password )
+        loginUser(username, password)
+        setUsername('')
+        setPassword('')
 
     }
 
@@ -34,15 +36,14 @@ const LoginPage= () => {
                 <form className='add-form' background-color="limegreen" onSubmit={onSubmit} >
                     <div className='form-control'>
                         < LoginRegNavbar title="Login" />
-                        <label>Email </label>
-                        <input type='text' placeholder='Email'
+                        <label>Username </label>
+                        <input type='text' placeholder='Username'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)} />
                     </div>
-
                     <div className='form-control'>
                         <label>Password </label>
-                        <input type='text' placeholder='Password'
+                        <input type='password' placeholder='Password'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
                     </div>

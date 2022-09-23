@@ -1,11 +1,13 @@
 import { FaRocketchat } from 'react-icons/fa'
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import React from "react"; 
 import "./Post.css"
 
 
 const Post = ({  post }) => {
 
-
+    const { user } = useContext(AuthContext)
     return (
         <div className="post">
             {/*<div className="post__header">
@@ -32,7 +34,7 @@ const Post = ({  post }) => {
 
                 <p>
                     <FaRocketchat size={20} color="black" />
-                    <strong>     pauljess82 posted:   </strong> {post.caption}
+                    <strong> {user ? ( user.username )  : ( " " )}      </strong> {post.caption}
                 </p>
             </div>
 

@@ -6,6 +6,7 @@ import AuthContext from "../context/AuthContext";
 import UserInfo from "../components/UserInfo";
 import axios from "axios";
 import { config } from '../config'
+import Header from "../components/Header";
 
 const FeedPage = () => {
 
@@ -39,18 +40,22 @@ const FeedPage = () => {
             }
         })
             .then(res => {
+               
                 console.log(res.request.status);
+                const data = res.data
+                setPosts([...posts,data])
+                
             })
             .catch(err => console.log(err))
     }
 
     return (
         <>
-            <section>
-                {user && <UserInfo user={user}/> }
-                <h1> Happy Posting!</h1>
-            </section>
-          < CreatePost onAddPost={addPost}/>
+            <div id="backgroundimage-user">
+            </div>
+                    <Header/>
+            < CreatePost onAddPost={addPost} />
+            <br/>
           <Feed posts={posts}/> 
         </>
 

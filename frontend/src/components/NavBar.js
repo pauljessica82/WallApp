@@ -3,8 +3,6 @@ import AuthContext from "../context/AuthContext";
 import Button from './Button'
 import { Link } from 'react-router-dom'
 
-/*onlogin and on show will bring up these elemnts. the show login and showsignup will be used as conditional checks*/
-
 const NavBar = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
@@ -12,17 +10,23 @@ const NavBar = () => {
     return (
         <div>
         <div className ="navbar">
-            
-                <Link to="/">
-                <h3>
-                    WallShare
-                    </h3>
-                </Link>
 
+                { !user ? (
+                    <Link to="/">
+                        <h3>
+                            WallShare
+                        </h3>
+                    </Link>) :  (
+                        <Link to="/feed">
+                            <h3>
+                                WallShare
+                        </h3>
+                    </Link> )}
+                            
                 <span >
                     {user ? (
 
-                        <Button text="Logout" color="red" onClick={logoutUser} left_percent="78% " />
+                        <Button text="Logout" color="crimson" onClick={logoutUser} left_percent="78% " />
                      
                     ) : (  
                             <>

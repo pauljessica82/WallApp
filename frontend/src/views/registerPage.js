@@ -5,16 +5,18 @@ import AuthContext from "../context/AuthContext";
 const RegisterPage = () => {
     const [first_name, setFname] = useState('')
     const [last_name, setLname] = useState('')
-    const [username, setEmail] = useState('')
+    const [email, setEmail] = useState('')
+    const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [confirmpassword, setConfirmPassword] = useState('')
+
     const { registerUser } = useContext(AuthContext)
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if (!username) {
-            alert("Please enter a email in the username field")
+        if (!email) {
+            alert("Please enter a an email!")
             return
         }
 
@@ -23,17 +25,18 @@ const RegisterPage = () => {
             return
         }
 
-        registerUser(first_name, last_name, username, password)
+        registerUser(first_name, last_name, email, username, password)
+
         setFname('')
         setLname('')
         setEmail('')
+        setUsername('')
         setPassword('')
         setConfirmPassword('')
 
     }
 
     return (
-
 
         <div className="modalBackground">
             <div className="modalContainer-register">
@@ -56,20 +59,27 @@ const RegisterPage = () => {
                     <div className='form-control'>
                         <label> Email </label>
                         <input type='text' placeholder='Email'
-                            value={username}
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)} />
                     </div>
 
                     <div className='form-control'>
+                        <label> Username </label>
+                        <input type='text' placeholder='Email'
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+
+                    <div className='form-control'>
                         <label>Password </label>
-                        <input type='text' placeholder='Enter Password 8 characters or above'
+                        <input type='password' placeholder='8 characters or more'
                             value={password}
                             onChange={(e) => setPassword(e.target.value)} />
                     </div>
 
                     <div className='form-control'>
                         <label>Confirm Password</label>
-                        <input type='text' placeholder='Re-enter Password'
+                        <input type='password' placeholder='Re-enter Password'
                             value={confirmpassword}
                             onChange={(e) => setConfirmPassword(e.target.value)} />
                     </div>

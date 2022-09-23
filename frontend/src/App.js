@@ -8,6 +8,8 @@ import RegisterPage from './views/registerPage';
 import LoginPage from './views/loginPage';
 import FeedPage from './views/ProtectedPage';
 import HomePage from './views/homePage';
+import ProtectedPage from './views/ProtectedPage';
+
 
 
 
@@ -20,9 +22,12 @@ const App = () => {
                     <NavBar />
                     <Routes>
                     
-                        <Route exact path='/feed' element={<PrivateRoute />}>
-                            <Route exact path='/feed' element={<FeedPage />} />
-                        </Route>
+                        <Route path="/feed"
+                            element={
+                                <PrivateRoute>
+                                   <ProtectedPage/>
+                                </PrivateRoute>
+                            } />
                         
                     
                         <Route exact path='/' element={<HomePage />}>

@@ -41,9 +41,9 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-        history("/", { replace: true });
+        history("/feed", { replace: true });
     } else {
-      alert("Something went wrong!");
+      alert("Something went wrong! Check all fields and try again.");
     }
   };
   
@@ -64,15 +64,19 @@ export const AuthProvider = ({ children }) => {
     if (response.status === 201) {
         history("/login", { replace: true });
     } else {
-      alert("Something went wrong!");
+      alert("Something went wrong! Try again.");
     }
   };
 
-  const logoutUser = () => {
-    setAuthTokens(null);
-    setUser(null);
-      localStorage.removeItem("authTokens");
-      history("/", { replace: true });
+    const logoutUser = () => {
+        const confirm = window.confirm("Are you sure you want to logout?")
+        if (confirm){ 
+        setAuthTokens(null);
+        setUser(null);
+        localStorage.removeItem("authTokens");
+        history("/", { replace: true });
+    }
+   
   };
 
   const contextData = {

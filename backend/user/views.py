@@ -1,15 +1,12 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
-from django.http import JsonResponse
 from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.permissions import AllowAny, IsAuthenticated
+from .utils import Util
 
 
 @api_view(['GET', 'POST'])
@@ -34,6 +31,18 @@ class RegisterView(generics.CreateAPIView):
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
 
+    def post(self, request):
+        user = request.data
+        serializer = self.serializer_class(data=user)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        user_data = serializer.data
+        user = User.objects.get(email=user_data['email'])
+        email_body = f'Hi {user.username}! Welcome to WallShare. Happy posting!'
+        data = {'email_body': email_body, 'to_email': user.email, 'email_subject': 'Welcome to WallShare!'}
+        Util.send_email(data)
+        return Response(user_data, status=status.HTTP_201_CREATED)
+
 
 @api_view(['GET'])
 def getRoutes(request):
@@ -42,7 +51,6 @@ def getRoutes(request):
         '/api/register/',
         '/api/token/refresh/',
         '/api/test/',
-
 
     ]
     return Response(routes)
