@@ -5,6 +5,8 @@
 WallApp is a simple app that allows a user to write a message and post a picture to a "wall." To post, a user must first signup, after which, they will be redirected to 
 a login page where they can use their newly created credentials to login and start posting. After signing in, the user will receive an email welcoming them to "WallShare"(internal name of site).
 
+Any guest user can still view posts without having to sign in.
+
 # Getting started and running the WallApp:
 
 1. Clone this repository to a directory in your desired location
@@ -31,7 +33,6 @@ a login page where they can use their newly created credentials to login and sta
       Ex. "pip install -r requirements.txt"
    - (Pycharm) Enable python virtual environment in PyCharm. File-Settings-Python Interpreter select new virtual environment with 
    specifying path to ....\env\Scripts\python.exe
-   - *** If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow". ***
    
 6. Set Up utils.py for email sending
 
@@ -43,10 +44,18 @@ a login page where they can use their newly created credentials to login and sta
                         
 7. Creating User and Post tables
 
-   a. In terminal, run "python manage.py migrate --run-syncdb" and tables will be generated to create users and posts.
-   b. Start the server by running python manage.py runserver in the terminal.
-   b. Now you should be able to register, login and create a new user by navigating to http://localhost:3000/. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email for registering) 
+   - In terminal, while in the ...WallApp/backend run "python manage.py migrate --run-syncdb" and tables will be generated to create users and posts.
+   - Start the server by running "python manage.py runserver" in the terminal.
+   - If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow".
+   - Now you should be able to register, login and create a new user by navigating to http://localhost:3000/. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email for registering) 
             
 ![image](https://user-images.githubusercontent.com/51688932/192016102-2935b8e2-e3fe-427a-966f-44c9fa5f0cb9.png)
 
+## API Testing With Postman
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b4feb6674584dea50443?action=collection%2Fimport)
+
+- First, register a new user by filling appropiate fields in the Body section
+- Use the "Login Obtain Token" request to enter the username and password. This will send back an access token
+- Use the generated access token in the "TestAPIEndpoint" request. Select "Bearer Token" under the Authorization tab. Enter the access token.  
 
