@@ -7,6 +7,7 @@ class TestSetUp(APITestCase):
     def setUp(self):
         self.register_url = reverse('auth_register')
         self.login_url = reverse('token_obtain_pair')
+        # self.post_url = reverse('post-list')
         self.user_data = {
             'first_name': "test",
             'last_name': "user",
@@ -14,8 +15,13 @@ class TestSetUp(APITestCase):
             'email': "kisifat435@dnitem.com",
             'username': "email",
             'password': "testing123@",
-
         }
+
+        # self.post_data = {
+        #     'caption': "test post",
+        #
+        #
+        # }
 
         return super().setUp()
 

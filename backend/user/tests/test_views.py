@@ -1,7 +1,5 @@
 import pdb
 
-import smtplib
-
 from .test_setup import TestSetUp
 
 
@@ -31,3 +29,5 @@ class TestViews(TestSetUp):
             self.login_url, (res.data['username'], self.user_data['password']), format="json")
 
         self.assertEqual(res.status_code, 201)
+
+
