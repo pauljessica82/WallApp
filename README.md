@@ -24,13 +24,23 @@ a login page where they can use their newly created credentials to login and sta
 
 5. Setup new virtual environment for backend 
 
-   1. In terminal, Navigate to project folder "backend" (...\WallApp\backend)
-   2. Execute this command in terminal: "virtualenv env" This will create env folder in the project folder
-   3. Activate virtual environment. " . env\Scripts\activate".
-   4. Install dependencies which are located in requirements.txt .
+   a. In terminal, Navigate to project folder "backend" (...\WallApp\backend)
+   b. Execute this command in terminal: "virtualenv env" This will create env folder in the project folder
+   c. Activate virtual environment. " . env\Scripts\activate".
+   d. Install dependencies which are located in requirements.txt .
       Ex. "pip install -r requirements.txt"
-   5. *** If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow". ***
-   5. You can now run any script with enabled virtual environment
+   e. *** If you come across the error "Cannot use ImageField because Pillow is not installed", run "pip uninstall Pillow", and then "pip install Pillow". ***
+   
+6. Set Up utils.py for email sending
 
-6. Enable python virtual environment in PyCharm. File-Settings-Python Interpreter select new virtual environment with 
-   specifying path to "C:\Git Projects\CI-Testing\env\Scripts\python.exe"
+   a. When user registers, a new email is fired off using the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD specified in the ..backend/user/utils.py file. Update these            to a valid email, and password of your choosing.  *Some details to note: 
+            a. The current script uses "smtp.gmail.com" as the host, the EMAIL_HOST_USER must be a valid gmail account with IMAP enabled. To enable IMAP, see:                      https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on.*The EMAIL_HOST_PASSWORD will be a generated             app password. To generate an app password for your Gmail account, see https://support.google.com/accounts/answer/185833?hl=en#:~:text=Create%20%26%20use%20App%20Passwords . 
+   
+7. Creating User and Post tables
+
+   a. In terminal, run "python manage.py migrate --run-syncdb" and tables will be generated to create users and posts.
+   b. Now you should be able to register a new user by navigating to http://localhost:3000/ , and clicking SignUp. ( I recommend using https://temp-mail.org/en/ if you would not like to use a real email ) 
+            
+
+6. (Pycharm) Enable python virtual environment in PyCharm. File-Settings-Python Interpreter select new virtual environment with 
+   specifying path to ....\env\Scripts\python.exe
