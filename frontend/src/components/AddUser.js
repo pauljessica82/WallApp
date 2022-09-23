@@ -7,7 +7,7 @@ const AddUser = ({ onAdd }) => {
     const [lname, setLname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [confirmpassword, setConfirmpassword] = useState('')
+    const [confirmpassword, setConfirmPassword] = useState('')
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -17,13 +17,16 @@ const AddUser = ({ onAdd }) => {
             return
         }
 
-        if (password != confirmpassword) {
+        if (password !== confirmpassword) {
             alert("Passwords do not Match!")
             return
         }
         onAdd({ fname, lname, email, password, confirmpassword })
-
-        /*route user to dashboard*/
+        setFname('')
+        setLname('')
+        setEmail('')
+        setPassword('')
+        setConfirmPassword('')
 
     }
 
@@ -57,16 +60,16 @@ const AddUser = ({ onAdd }) => {
 
             <div className='form-control'>
                 <label>Password </label>
-                <input type='text' placeholder='Create Password'
+                <input type='text' placeholder='Enter Password 8 characters or above'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)} />
             </div>
 
             <div className='form-control'>
                 <label>Confirm Password</label>
-                <input type='text' placeholder='Confirm Password'
+                <input type='text' placeholder='Re-enter Password'
                     value={confirmpassword}
-                    onChange={(e) => setConfirmpassword(e.target.value)} />
+                    onChange={(e) => setConfirmPassword(e.target.value)} />
             </div>
                         <div className="footer">
             <input type='submit' value='Create Account' className='form-button' />

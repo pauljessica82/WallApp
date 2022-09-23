@@ -12,17 +12,23 @@ const CreatePost = ({ onAddPost  }) => {
     const onSubmit = (e  ) => {
         e.preventDefault()
 
-         const form_data = new FormData();
-        form_data.append('caption', caption);
-        form_data.append('image', image, image.name);
+        const form_data = new FormData();
+        
       
         if (!caption) {
             alert("Please type a message")
             return
         }
 
-/*        need image.name 
-*/     /* onAddPost({ caption, image  })*/
+            if (!image) {
+                alert("Please select an image!")
+                return
+               
+            }
+           
+            form_data.append('caption', caption);
+            form_data.append('image', image, image.name);
+
         onAddPost(form_data)
         setCaption('')
         setImage()
@@ -40,17 +46,13 @@ const CreatePost = ({ onAddPost  }) => {
 
     }
 
-
-        /*    const[user, setUser] = useState(undefined)*/
-
     return (
-            <form id ="form" onSubmit={onSubmit}>
+           <form id ="form" onSubmit={onSubmit}>
             <div className="app__createPost">
                 <div className ="imageUpload">
                     <div className="createAPost__Top">
                         <p><strong>Create a Post</strong></p>
                     </div>
-                    {/* <progress value={progress} max="100" /> */}
 
                     <div className="createAPost__center">
                         <textarea
@@ -71,9 +73,9 @@ const CreatePost = ({ onAddPost  }) => {
 
                         <div className="imageUpload__bottom">
                             <div className="image-upload">
-                                <label htmlFor="file-input">
-                                <FaRegImages size={25} style={{ marginTop: "5px" }} />
-                                </label>
+                            <label htmlFor="file-input">
+                                <FaRegImages size={40} style={{ marginTop: "5px" }} /><p>Select image</p>
+                                </label> 
 
                                 <input
                                 id="file-input"
@@ -89,6 +91,7 @@ const CreatePost = ({ onAddPost  }) => {
                             type='submit'
                             className="button"
                             style={{
+                                fontSize: "20",
                                 color: caption ? "black" : "lightgrey",
                                 fontWeight: caption ? "600" : "500",
                             }}

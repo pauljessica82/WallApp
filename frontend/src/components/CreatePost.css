@@ -18,6 +18,7 @@
 .app__createPost {
     display: flex;
     justify-content: center;
+
 }
 
 .imageUpload {
@@ -26,6 +27,7 @@
     width: 100%;
     margin-top: 30px;
     padding: 16px 0px;
+
 }
 
 .createAPost__Top {

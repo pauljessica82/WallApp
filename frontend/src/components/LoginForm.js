@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import LoginRegNavbar from './LoginRegNavbar';
 import './Modal.css'
 

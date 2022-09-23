@@ -1,0 +1,42 @@
+.idea
+*.db
+*.xlsx
+*.pyc
+*.bak
+*.dat
+*.dir
+*.dump
+node_modules
+__pycache__
+sqlite
+tasktrackerapi/asgi.py
+db.sqlite3
+db.json
+.vs/TaskTrackerAPI/v16/.suo
+tasktrackerapi/local_settings.py
+Dockerfile
+docker-compose.yaml
+dumpfile.json
+frontend
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
