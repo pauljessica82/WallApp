@@ -65,7 +65,7 @@ const RegisterPage = () => {
 
                     <div className='form-control'>
                         <label> Username </label>
-                        <input type='text' placeholder='Email'
+                        <input type='text' placeholder='Username'
                             value={username}
                             onChange={(e) => setUsername(e.target.value)} />
                     </div>
