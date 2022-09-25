@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { config } from '../config'
+import { config } from '../utils/config'
 import Feed from '../components/Feed'
 import Header from '../components/Header'
 
@@ -17,7 +17,7 @@ const HomePage = () => {
     }, [])
 
     const fetchPosts = async () => {
-        const res = await fetch(config.url.BASE_API)
+        const res = await fetch(config.url.BASE_POSTS_API)
         const data = await res.json()
 
         return data

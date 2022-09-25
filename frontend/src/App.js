@@ -6,7 +6,6 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import RegisterPage from './views/registerPage';
 import LoginPage from './views/loginPage';
-import FeedPage from './views/ProtectedPage';
 import HomePage from './views/homePage';
 import ProtectedPage from './views/ProtectedPage';
 

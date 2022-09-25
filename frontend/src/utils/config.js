@@ -1,7 +1,7 @@
 const dev = {
     url: {
-        "BASE_API": "http://127.0.0.1:8000/api/posts/",
-        "BASE_URL": "http://localhost:8000/"
+        "BASE_POSTS_API": "http://127.0.0.1:8000/api/posts/",
+        "BASE_URL": "http://127.0.0.1:8000/api"
     }
 };
 
