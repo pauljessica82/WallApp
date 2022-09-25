@@ -52,11 +52,21 @@ Any guest user can still view posts without having to sign in.
             
 ![image](https://user-images.githubusercontent.com/51688932/192016102-2935b8e2-e3fe-427a-966f-44c9fa5f0cb9.png)
 
+## Info for Unit Testing
+
+- Test cases are located in ...WallApp\backend\post\tests\ & ...Wallapp\backend\user\tests\.
+
 ## API Testing With Postman
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b4feb6674584dea50443?action=collection%2Fimport)
 
-- First, register a new user by filling appropiate fields in the Body section
+- First, register a new user by filling appropiate fields in the Body section of the Register request
 - Use the "Login Obtain Token" request to enter the username and password. This will send back an access token
 - Use the generated access token in the "TestAPIEndpoint" request. Select "Bearer Token" under the Authorization tab. Enter the access token.  
+
+## Future Improvements
+
+- Add user authentication through a Google or Facebook account
+- Add more CRUD operations to posts so a user can delete and update their posts
+- Allow other users to comment and like others posts
 
